@@ -60,32 +60,66 @@
       text-align: center;
     }
 
-    /* Logo Circle Badge */
-    .logo-circle {
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      border: 3px solid #ffffff;
+   /* Logo Full Width (Zero Bordini / Senza Effetto Etichetta) */
+    .logo-fullwidth {
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      margin: 0 auto 12px auto;
+      padding: 0;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
       overflow: hidden;
-      background-color: #141b2d;
     }
 
-    .logo-circle svg {
+    .custom-logo-img-fullwidth {
       width: 100%;
-      height: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 240px;
+      object-fit: contain;
       display: block;
+      margin: 0 auto;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+
+    .logo-fullwidth svg {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+
+    /* Fallback alias */
+    .logo-circle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
     }
 
     .custom-logo-img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transform: scale(1.05);
+      max-width: 100%;
+      height: auto;
+      max-height: 240px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
     }
 
     /* Slogan Tagline */
