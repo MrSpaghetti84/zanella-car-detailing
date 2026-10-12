@@ -420,6 +420,57 @@
       flex-shrink: 0;
     }
 
+     /* Instagram Outlined Button (Stesso stile del tasto WhatsApp con colori Instagram) */
+    .instagram-booking-btn {
+      display: block;
+      margin-top: 10px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 2px solid #E1306C;
+      background-color: transparent;
+      text-align: center;
+      text-decoration: none;
+      color: #171738;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+      cursor: pointer;
+    }
+
+    .instagram-booking-btn:hover {
+      background-color: rgba(225, 48, 108, 0.08);
+      transform: scale(1.01);
+    }
+
+    .instagram-booking-btn:active {
+      transform: scale(0.99);
+    }
+
+    .instagram-label {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      display: block;
+      color: rgba(23, 23, 56, 0.85);
+    }
+
+    .instagram-handle-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 900;
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .instagram-icon {
+      width: 18px;
+      height: 18px;
+      stroke: #E1306C;
+      flex-shrink: 0;
+    }
+
     /* Safe bottom spacer */
     .bottom-spacer {
       height: 16px;
@@ -496,6 +547,20 @@
             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.41a8.16 8.16 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.188 8.188 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.8-.23-.09-.39-.13-.56.13-.17.25-.65.8-.8 1-.15.19-.3.21-.55.09-.25-.13-1.07-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.6c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.07-.1-.23-.17-.48-.29z"/>
           </svg>
           <span>WhatsApp: +39 3474227974</span>
+        </div>
+      </a>
+
+        <!-- Clickable Instagram Box (Guarda i miei lavori - Stesso stile con colori Instagram) -->
+      
+      <a href="https://www.instagram.com/zanella.cardetailing/" target="_blank" rel="noopener noreferrer" class="instagram-booking-btn" title="Guarda i miei lavori su Instagram">
+        <span class="instagram-label">Seguimi su instagram</span>
+        <div class="instagram-handle-row">
+          <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span>@zanella.cardetailing</span>
         </div>
       </a>
 
