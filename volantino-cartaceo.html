@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zanella Car Detailing • Volantino Cartaceo</title>
+
+  <!-- Google Fonts identici al volantino -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Barlow+Condensed:wght@600;700;800;900&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    @page {
+      size: A5 portrait;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #c9d8cf;
+      color: #171738;
+      margin: 0;
+      padding: 20px 0;
+      line-height: 1.35;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Foglio A5 proporzionato sia per la visualizzazione a schermo che per la stampa */
+    .flyer-page {
+      width: 148mm;
+      min-height: 210mm;
+      background-color: #E6F4EB;
+      margin: 0 auto;
+      padding: 12mm 14mm 10mm 14mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border-radius: 4px;
+    }
+
+    @media print {
+      body {
+        background-color: #E6F4EB;
+        padding: 0;
+        margin: 0;
+      }
+      .flyer-page {
+        width: 100vw;
+        height: 100vh;
+        min-height: 100vh;
+        margin: 0;
+        padding: 10mm 12mm 8mm 12mm;
+        box-shadow: none;
+        border-radius: 0;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+      }
+      .print-btn-bar {
+        display: none !important;
+      }
+    }
+
+    /* Barra di controllo per visualizzazione a schermo */
+    .print-btn-bar {
+      margin-bottom: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .print-btn {
+      background: #3423A6;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Barlow', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(52, 35, 166, 0.25);
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .print-btn:hover {
+      background: #251680;
+      transform: translateY(-1px);
+    }
+
+    /* Header */
+    .flyer-header {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo-container {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .logo-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .tagline-container {
+      margin-top: 6px;
+    }
+
+    .tagline-text {
+      color: #2E1760;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .domicilio-subtitle {
+      margin-top: 4px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: rgba(23, 23, 56, 0.8);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Corpo del volantino */
+    .flyer-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 8px 0;
+      flex-grow: 1;
+      justify-content: space-around;
+    }
+
+    /* Sezione Servizio Completo */
+    .service-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .service-header {
+      text-align: center;
+    }
+
+    .service-title {
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #171738;
+    }
+
+    .service-subtitle {
+      font-family: 'Barlow', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(23, 23, 56, 0.85);
+    }
+
+    .bullet-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .bullet-item strong {
+      color: #2E1760;
+    }
+
+    /* Griglia prezzi 3 colonne centrata a larghezza intera */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      width: 100%;
+      gap: 6px;
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    .pricing-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 4px 2px;
+      min-width: 0;
+    }
+
+    .car-size-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: #3423A6;
+      line-height: 1.15;
+      text-align: center;
+      min-height: 2.3em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .car-models {
+      font-size: 9.5px;
+      color: rgba(23, 23, 56, 0.72);
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    .car-price {
+      font-size: 22px;
+      font-weight: 800;
+      color: #3423A6;
+      margin-top: 2px;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    /* Riquadri di contatto per la stampa (WhatsApp + Instagram) */
+    .contacts-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 4px 0;
+    }
+
+    .contact-card {
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .contact-card.whatsapp {
+      border: 1.5px solid #25D366;
+    }
+
+    .contact-card.instagram {
+      border: 1.5px solid #E1306C;
+    }
+
+    .contact-badge-label {
+      font-size: 8.5px;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: rgba(23, 23, 56, 0.85);
+    }
+
+    .contact-val-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 3px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .contact-icon {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .whatsapp-icon {
+      fill: #25D366;
+    }
+
+    .instagram-icon {
+      stroke: #E1306C;
+    }
+
+    /* Servizi Extra */
+    .extra-services-section {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .section-title {
+      font-family: 'Barlow', sans-serif;
+      font-size: 12.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: center;
+      color: #171738;
+    }
+
+    .extra-item-desc {
+      font-size: 10px;
+      line-height: 1.35;
+      color: rgba(23, 23, 56, 0.88);
+      text-align: left;
+    }
+
+    .extra-sizes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 4px;
+      width: 100%;
+    }
+
+    .extra-pill {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 4px;
+      border-radius: 5px;
+      border: 1px solid rgba(52, 35, 166, 0.25);
+      color: #3423A6;
+      background: rgba(255, 255, 255, 0.35);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* Vantaggi della cura a domicilio */
+    .advantages-section {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 12px;
+      font-size: 10px;
+      line-height: 1.35;
+    }
+
+    .adv-item strong {
+      color: #2E1760;
+      display: block;
+      font-size: 10.5px;
+    }
+
+    /* Supplemento sporco */
+    .dirt-surcharge-box {
+      border: 1px solid #171738;
+      background-color: rgba(255, 255, 255, 0.45);
+      color: #171738;
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .dirt-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .dirt-badge {
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background-color: rgba(23, 23, 56, 0.1);
+      color: #171738;
+      border: 1px solid #171738;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pulsante rapido di stampa visibile solo a video -->
+  <div class="print-btn-bar">
+    <button class="print-btn" onclick="window.print()">
+      🖨️ Stampa Volantino (A5 / PDF)
+    </button>
+  </div>
+
+  <main class="flyer-page">
+    <!-- Header -->
+    <header class="flyer-header">
+      <div class="logo-container">
+        <img src="logo-banner.png" alt="Zanella Car Detailing" class="logo-img">
+      </div>
+
+      <div class="tagline-container">
+        <h2 class="tagline-text">Il valore del tuo tempo, la bellezza della tua auto</h2>
+      </div>
+
+      <p class="domicilio-subtitle">Servizio di lavaggio e cura dell'auto a domicilio</p>
+    </header>
+
+    <!-- Corpo del volantino -->
+    <div class="flyer-body">
+      <!-- Servizio Completo -->
+      <section class="service-box">
+        <div class="service-header">
+          <h3 class="service-title">Servizio Completo</h3>
+          <p class="service-subtitle">(Esterno + Interno)</p>
+        </div>
+
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <span><strong>Esterno a mano:</strong> lavaggio carrozzeria, cerchi, cera protettiva idrorepellente, finitura gomme e vetri.</span>
+          </div>
+          <div class="bullet-item">
+            <span><strong>Interni accurati:</strong> aspirazione moquette, sedili e baule, dettaglio con pennellini su bocchette/comandi, finitura cruscotto/plastiche, pulizia battitacco, guarnizioni e cristalli.</span>
+          </div>
+        </div>
+
+        <!-- 3 Colonne Prezzi Centrate -->
+        <div class="pricing-grid">
+          <div class="pricing-col">
+            <span class="car-size-name">Utilitarie &amp;<br>City Car</span>
+            <span class="car-models">500, Yaris, Polo</span>
+            <span class="car-price">€ 45</span>
+          </div>
+
+          <div class="pricing-col">
+            <span class="car-size-name">Berline, SW &amp;<br>Crossover</span>
+            <span class="car-models">Golf, T-Roc, SW</span>
+            <span class="car-price">€ 55</span>
+          </div>
+
+          <div class="pricing-col">
+            <span class="car-size-name">SUV &amp;<br>Monovolume</span>
+            <span class="car-models">Tiguan, X5, Q7</span>
+            <span class="car-price">€ 75</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Riquadri di contatto per la stampa -->
+      <section class="contacts-row">
+        <div class="contact-card whatsapp">
+          <span class="contact-badge-label">Prenota su WhatsApp o Chiama</span>
+          <div class="contact-val-row">
+            <svg class="contact-icon whatsapp-icon" viewBox="0 0 24 24">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.41a8.16 8.16 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.188 8.188 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.8-.23-.09-.39-.13-.56.13-.17.25-.65.8-.8 1-.15.19-.3.21-.55.09-.25-.13-1.07-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.6c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.07-.1-.23-.17-.48-.29z"/>
+            </svg>
+            <span>+39 378 095 1014</span>
+          </div>
+        </div>
+
+        <div class="contact-card instagram">
+          <span class="contact-badge-label">Guarda i lavori prima/dopo</span>
+          <div class="contact-val-row">
+            <svg class="contact-icon instagram-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>@zanella.cardetailing</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Servizi Extra -->
+      <section class="extra-services-section">
+        <h3 class="section-title">Servizi Extra</h3>
+        <p class="extra-item-desc">
+          <strong>Trattamento sedili in pelle o tessuto:</strong> rinnoviamo gli interni con nebulizzazione ed estrazione liquidi per i tessuti e prodotti nutrienti anti-usura per la pelle.
+        </p>
+        <div class="extra-sizes">
+          <span class="extra-pill">Small € 25</span>
+          <span class="extra-pill">Medium € 35</span>
+          <span class="extra-pill">Large € 45</span>
+        </div>
+      </section>
+
+      <!-- I Vantaggi della Cura a Domicilio -->
+      <section class="advantages-section">
+        <h3 class="section-title">I Vantaggi della cura a domicilio</h3>
+        <div class="advantages-grid">
+          <div class="adv-item">
+            <strong>✓ Cura artigianale a mano</strong>
+            Nessun rullo aggressivo, zero micro-graffi e brillantezza protetta nel tempo.
+          </div>
+          <div class="adv-item">
+            <strong>✓ Comodità sotto casa</strong>
+            Intervengo direttamente al tuo domicilio, risparmiando code e ore di attesa.
+          </div>
+          <div class="adv-item">
+            <strong>✓ Minimo consumo d'acqua</strong>
+            Tecniche mirate a basso impatto idrico (-90% d'acqua) e nessun allagamento.
+          </div>
+          <div class="adv-item">
+            <strong>✓ Massima serenità</strong>
+            Copertura assicurativa professionale dedicata (RC Custodia e Danni a Terzi).
+          </div>
+        </div>
+      </section>
+
+      <!-- Supplemento sporco -->
+      <div class="dirt-surcharge-box">
+        <span class="dirt-title">Supplemento sporco straordinario (abitacoli molto trascurati)</span>
+        <span class="dirt-badge">+25%</span>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
